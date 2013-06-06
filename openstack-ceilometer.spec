@@ -3,14 +3,14 @@
 %global pypi_name ceilometer
 
 Name:             openstack-ceilometer
-Version:          2013.1
-Release:          2%{?dist}
+Version:          2013.1.2
+Release:          1%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              https://wiki.openstack.org/wiki/Ceilometer
-Source0:          http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-2013.1.tar.gz
+Source0:          http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:          %{pypi_name}.conf
 Source2:          %{pypi_name}.logrotate
 
@@ -20,7 +20,7 @@ Source12:         %{name}-compute.service
 Source13:         %{name}-central.service
 
 #
-# patches_base=2013.1
+# patches_base=2013.1.2
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
 
@@ -389,6 +389,9 @@ fi
 
 
 %changelog
+* Thu Jun  6 2013 Pádraig Brady <P@draigBrady.com> - 2013.1.2-1
+- Update to stable/grizzly release 2013.1.2
+
 * Thu Jun  6 2013 Pádraig Brady <P@draigBrady.com> - 2013.1-2
 - Fix uninstall for openstack-ceilometer-central
 
