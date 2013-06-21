@@ -4,7 +4,7 @@
 
 Name:             openstack-ceilometer
 Version:          2013.1.2
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
@@ -23,6 +23,7 @@ Source13:         %{name}-central.service
 # patches_base=2013.1.2
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
+Patch0002: 0002-avoid-code-path-causing-qpid-exchange-leaks.patch
 
 BuildArch:        noarch
 BuildRequires:    intltool
@@ -181,6 +182,7 @@ This package contains documentation files for ceilometer.
 %setup -q -n ceilometer-%{version}
 
 %patch0001 -p1
+%patch0002 -p1
 
 find . \( -name .gitignore -o -name .placeholder \) -delete
 
@@ -389,6 +391,9 @@ fi
 
 
 %changelog
+* Fri Jun 21 2013 Pádraig Brady <P@draigBrady.com> - 2013.1.2-2
+- Avoid qpid exchange leaks
+
 * Thu Jun  6 2013 Pádraig Brady <P@draigBrady.com> - 2013.1.2-1
 - Update to stable/grizzly release 2013.1.2
 
