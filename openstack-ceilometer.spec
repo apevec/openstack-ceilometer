@@ -3,8 +3,8 @@
 %global pypi_name ceilometer
 
 Name:             openstack-ceilometer
-Version:          2013.1.2
-Release:          2%{?dist}
+Version:          2013.1.3
+Release:          1%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
@@ -20,7 +20,7 @@ Source12:         %{name}-compute.service
 Source13:         %{name}-central.service
 
 #
-# patches_base=2013.1.2
+# patches_base=2013.1.3
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
 Patch0002: 0002-avoid-code-path-causing-qpid-exchange-leaks.patch
@@ -391,6 +391,9 @@ fi
 
 
 %changelog
+* Tue Aug 13 2013 Alan Pevec <apevec@redhat.com> 2013.1.3-1
+- Update to stable/grizzly release 2013.1.3
+
 * Fri Jun 21 2013 Pádraig Brady <P@draigBrady.com> - 2013.1.2-2
 - Avoid qpid exchange leaks
 
