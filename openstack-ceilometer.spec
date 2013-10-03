@@ -489,9 +489,9 @@ fi
 %{_bindir}/ceilometer-alarm-notifier
 %{_bindir}/ceilometer-alarm-evaluator
 %{_initrddir}/%{name}-alarm-notifier
-%{_datarootdir}/ceilometer/%{name}-notifier.upstart
+%{_datarootdir}/ceilometer/%{name}-alarm-notifier.upstart
 %{_initrddir}/%{name}-alarm-evaluator
-%{_datarootdir}/ceilometer/%{name}-evaluator.upstart
+%{_datarootdir}/ceilometer/%{name}-alarm-evaluator.upstart
 
 
 %changelog
