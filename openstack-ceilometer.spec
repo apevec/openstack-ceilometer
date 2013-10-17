@@ -4,13 +4,13 @@
 
 Name:             openstack-ceilometer
 Version:          2013.2
-Release:          0.12.rc2%{?dist}
+Release:          1%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              https://wiki.openstack.org/wiki/Ceilometer
-Source0:          http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{version}.rc2.tar.gz
+Source0:          http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:          %{pypi_name}-dist.conf
 Source2:          %{pypi_name}.logrotate
 
@@ -28,7 +28,7 @@ Source15:         %{name}-alarm-evaluator.init
 Source150:        %{name}-alarm-evaluator.upstart
 
 #
-# patches_base=2013.2.rc2
+# patches_base=2013.2
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
 
@@ -215,7 +215,7 @@ This package contains documentation files for ceilometer.
 %endif
 
 %prep
-%setup -q -n ceilometer-%{version}.rc2
+%setup -q -n ceilometer-%{version}
 
 %patch0001 -p1
 
@@ -496,6 +496,9 @@ fi
 
 
 %changelog
+* Thu Oct 17 2013 Pádraig Brady <pbrady@redhat.com> - 2013.2-1
+- Update to Havana release
+
 * Tue Oct 15 2013 Pádraig Brady <pbrady@redhat.com> - 2013.2-0.12.rc2
 - Update to Havana rc2
 - openstack-ceilometer-alarm now depends on python-ceilometerclient
