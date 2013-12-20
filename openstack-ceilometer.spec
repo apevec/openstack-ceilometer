@@ -28,7 +28,7 @@ Source15:         %{name}-alarm-evaluator.init
 Source150:        %{name}-alarm-evaluator.upstart
 
 #
-# patches_base=2013.2
+# patches_base=2013.2.1
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
 
