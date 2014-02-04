@@ -4,7 +4,7 @@
 
 Name:             openstack-ceilometer
 Version:          2013.2.1
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
@@ -63,6 +63,7 @@ Requires:         python-qpid
 Requires:         python-kombu
 Requires:         python-amqplib
 
+Requires:         python-babel
 Requires:         python-eventlet
 Requires:         python-greenlet
 Requires:         python-iso8601
@@ -496,6 +497,9 @@ fi
 
 
 %changelog
+* Tue Feb 04 2014 Pádraig Brady <pbrady@redhat.com> - 2013.2.1-2
+- Fix missing dependency on python-babel
+
 * Tue Dec 17 2013 Pádraig Brady <pbrady@redhat.com> - 2013.2.1-1
 - Update to Havana stable release 2013.2.1
 
