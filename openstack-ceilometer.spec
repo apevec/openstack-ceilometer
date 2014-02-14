@@ -3,8 +3,8 @@
 %global pypi_name ceilometer
 
 Name:             openstack-ceilometer
-Version:          2013.2.1
-Release:          2%{?dist}
+Version:          2013.2.2
+Release:          1%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
@@ -28,7 +28,7 @@ Source15:         %{name}-alarm-evaluator.init
 Source150:        %{name}-alarm-evaluator.upstart
 
 #
-# patches_base=2013.2.1
+# patches_base=2013.2.2
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
 
@@ -497,6 +497,9 @@ fi
 
 
 %changelog
+* Fri Feb 14 2014 Flavio Percoco <flavio@redhat.com> - 2014.2.2-1
+- Update to havana stable release 2013.2.2
+
 * Tue Feb 04 2014 Pádraig Brady <pbrady@redhat.com> - 2013.2.1-2
 - Fix missing dependency on python-babel
 
