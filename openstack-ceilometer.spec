@@ -1,16 +1,20 @@
 %global _without_doc 1
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %global pypi_name ceilometer
+%global release_name havana
+%global project ceilometer
+Source0:        http://tarballs.openstack.org/%{project}/%{project}-stable-%{release_name}.tar.gz
+%global devtag %(tar ztf %{SOURCE0} 2>/dev/null | head -1 | rev | cut -d. -f2 | rev)
+%global devrel %(tar ztf %{SOURCE0} 2>/dev/null | head -1 | rev | cut -d. -f3-5 | cut -d- -f1 | rev)
 
 Name:             openstack-ceilometer
-Version:          2013.2.2
-Release:          1%{?dist}
+Version:          %{devrel}
+Release:          0.1.%{devtag}%{?dist}
 Summary:          OpenStack measurement collection service
 
 Group:            Applications/System
 License:          ASL 2.0
 URL:              https://wiki.openstack.org/wiki/Ceilometer
-Source0:          http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 Source1:          %{pypi_name}-dist.conf
 Source2:          %{pypi_name}.logrotate
 
@@ -28,7 +32,7 @@ Source15:         %{name}-alarm-evaluator.init
 Source150:        %{name}-alarm-evaluator.upstart
 
 #
-# patches_base=2013.2.2
+# patches_base=gerrit/stable/havana
 #
 Patch0001: 0001-Ensure-we-don-t-access-the-net-when-building-docs.patch
 
@@ -216,8 +220,8 @@ This package contains documentation files for ceilometer.
 %endif
 
 %prep
-%setup -q -n ceilometer-%{version}
-
+%setup -q -c -T
+tar --strip-components=1 -zxf %{SOURCE0}
 %patch0001 -p1
 
 # Apply EL6 patch
@@ -243,6 +247,8 @@ while read name eq value; do
   test "$name" && test "$value" || continue
   sed -i "0,/^# *$name=/{s!^# *$name=.*!#$name=$value!}" etc/ceilometer/ceilometer.conf.sample
 done < %{SOURCE1}
+
+sed -i 's/^Version: .*/Version: %{version}/' PKG-INFO
 
 %build
 %{__python} setup.py build
